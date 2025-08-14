@@ -2,217 +2,183 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Georgios Giannakopoulos CEng MIET SMIEEE AdvRITTech MBCS MInstP ARAeS — Research Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Georgios Giannakopoulos — Research Profile</title>
 
   <style>
     :root { --text:#111827; --muted:#475569; --border:#e5e7eb; }
-
+    *{box-sizing:border-box}
     html,body{margin:0;padding:0}
-    body{
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      color: var(--text);
-      line-height: 1.6;
-      background:#fff;
-    }
-    .container{max-width:1040px;margin:0 auto;padding:24px}
+    body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);line-height:1.6;background:#fff}
+
+    /* ========== Layout: LEFT sidebar + RIGHT main ========== */
+    .container{max-width:1120px;margin:0 auto;padding:24px}
+    .layout{display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:start}
+
+    /* Sidebar (moved from right to LEFT) */
+    .sidebar{width:300px}
+    .sb-photo{width:100%;height:auto;border:1px solid var(--border);border-radius:8px;display:block;margin-bottom:12px}
+    .sb-card{border:1px solid var(--border);border-radius:12px;padding:12px;background:#fff}
+
+    .sb-counts{display:flex;gap:16px;margin:10px 0 12px}
+    .sb-counts b{font-weight:800}
+    .sb-muted{color:var(--muted)}
+
+    .sb-badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--border);border-radius:10px;padding:6px 10px;margin:6px 0}
+    .sb-dot{width:10px;height:10px;border-radius:50%;background:#3b82f6;display:inline-block}
+
+    .sb-pills{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
+    .sb-pill{border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:.9rem}
+
+    .sb-rule{border-top:1px solid var(--border);margin:12px 0}
+
+    .sb-cites h3{margin:0 0 6px;font-size:1rem}
+    .sb-chart{width:100%;height:160px;border-left:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .sb-cmetrics{display:flex;justify-content:space-between;margin-top:8px}
+
+    .sb-linkrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .sb-ext{font-size:.9rem;border-bottom:1px dotted #666;color:#1f2937;text-decoration:none}
+    .sb-ext:hover{border-bottom-color:#2563eb;color:#2563eb}
+
+    /* Main column */
     h1{margin:0 0 12px;font-size:clamp(24px,3vw,36px);font-weight:800}
     h2{margin:28px 0 12px;font-size:22px}
     h3{margin:0 0 6px;font-size:18px}
     a{color:#2563eb;text-decoration:none}
     a:hover{text-decoration:underline}
 
-    /* ===== Right column wrapper (photo + panel) ===== */
-    .right-col{
-      width:260px;
-      float:right;
-      margin-left:24px;
-    }
-    .profile-image{
-      width:100%;
-      height:auto;
-      display:block;
-      border:1px solid var(--border);
-      border-radius:8px;
-      margin-bottom:12px; /* space above the stats card */
-    }
-
-    /* ===== Right-rail card ===== */
-    .right-rail{width:100%; font-size:14px; color:#0f172a;}
-    .rr-card{border:1px solid var(--border);border-radius:12px;padding:12px;background:#fff}
-
-    .rr-counts{display:flex;gap:16px;margin:10px 0 12px}
-    .rr-counts b{font-weight:800}
-    .rr-muted{color:var(--muted)}
-
-    .rr-badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--border);
-              border-radius:10px;padding:6px 10px;margin:6px 0}
-    .rr-dot{width:10px;height:10px;border-radius:50%;background:#3b82f6;display:inline-block}
-
-    .rr-pills{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
-    .rr-pill{border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:.9rem}
-
-    .rr-rule{border-top:1px solid var(--border);margin:12px 0}
-
-    .rr-cites h3{margin:0 0 6px;font-size:1rem}
-    .rr-chart{width:100%;height:160px;border-left:1px solid var(--border);border-bottom:1px solid var(--border)}
-    .rr-cmetrics{display:flex;justify-content:space-between;margin-top:8px}
-
-    .rr-linkrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .rr-ext{font-size:.9rem;border-bottom:1px dotted #666;color:#1f2937;text-decoration:none}
-    .rr-ext:hover{border-bottom-color:#2563eb;color:#2563eb}
-
-    /* ===== Publications ===== */
     .publication-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--border)}
     .publication-content{flex:1}
     .publication-authors{color:var(--muted);font-size:14px;margin:4px 0}
     .publication-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-    .publication-link{
-      border:1px solid #111;border-radius:6px;padding:4px 8px;font-size:12px;
-      color:#111;text-decoration:none
-    }
+    .publication-link{border:1px solid #111;border-radius:6px;padding:4px 8px;font-size:12px;color:#111;text-decoration:none}
     .publication-link:hover{border-color:#2563eb;color:#2563eb}
 
-    /* Clear floats before publications section */
-    .clear{clear:both}
-
-    .container::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-
-    /* Mobile: stack right column under content */
+    /* Mobile: stack */
     @media (max-width:900px){
-      .right-col{float:none;margin:0 auto 16px;max-width:320px;width:100%}
+      .layout{grid-template-columns:1fr}
+      .sidebar{width:100%;max-width:480px;margin:0 auto}
     }
-
-
-
   </style>
 </head>
 <body>
   <div class="container">
+    <div class="layout">
 
-    <!-- ===== Header ===== -->
-    <h1>Georgios Giannakopoulos CEng MIET SMIEEE AdvRITTech MBCS MInstP ARAeS</h1>
-
-    <!-- ===== Right column (photo + stats) ===== -->
-    <div class="right-col">
-      <!-- Use your local image file; put it in the same repo and keep the name below -->
-      <img class="profile-image" src="me.jpeg" alt="Profile photo" />
-
-      <aside class="right-rail">
-        <div class="rr-card">
-          <div class="rr-counts">
-            <div><b id="rrFollowers">0</b> <span class="rr-muted">Followers</span></div>
-            <div><b id="rrFollowing">0</b> <span class="rr-muted">Following</span></div>
+      <!-- ========== LEFT COLUMN (Sidebar) ========== -->
+      <aside class="sidebar">
+        <img id="sbPhoto" class="sb-photo" src="me.jpeg" alt="Profile photo" />
+        <div class="sb-card">
+          <div class="sb-counts">
+            <div><b id="sbFollowers">0</b> <span class="sb-muted">Followers</span></div>
+            <div><b id="sbFollowing">0</b> <span class="sb-muted">Following</span></div>
           </div>
 
-          <div class="rr-badge"><span class="rr-dot"></span><span id="rrBadge">Google Scholar</span></div>
+          <div class="sb-badge"><span class="sb-dot"></span><span id="sbBadge">Google Scholar</span></div>
+          <div id="sbPills" class="sb-pills"></div>
 
-          <div id="rrPills" class="rr-pills"></div>
+          <div class="sb-rule"></div>
 
-          <div class="rr-rule"></div>
-
-          <div class="rr-cites">
+          <div class="sb-cites">
             <h3>Citations</h3>
-            <svg id="rrChart" class="rr-chart" role="img" aria-label="Citations by year"></svg>
-            <div class="rr-cmetrics">
-              <div><b id="rrH">0</b><span class="rr-muted">h-index</span></div>
-              <div><b id="rrI10">0</b><span class="rr-muted">i10-index</span></div>
-              <div><b id="rrTot">0</b><span class="rr-muted">citations</span></div>
+            <svg id="sbChart" class="sb-chart" role="img" aria-label="Citations by year"></svg>
+            <div class="sb-cmetrics">
+              <div><b id="sbH">0</b><span class="sb-muted">h-index</span></div>
+              <div><b id="sbI10">0</b><span class="sb-muted">i10-index</span></div>
+              <div><b id="sbTot">0</b><span class="sb-muted">citations</span></div>
             </div>
           </div>
 
-          <div class="rr-rule"></div>
-
-          <div id="rrLinks" class="rr-linkrow"></div>
+          <div class="sb-rule"></div>
+          <div id="sbLinks" class="sb-linkrow"></div>
         </div>
       </aside>
+
+      <!-- ========== RIGHT COLUMN (Main) ========== -->
+      <main class="main">
+        <h1>Georgios Giannakopoulos CEng MIET SMIEEE AdvRITTech MBCS MInstP ARAeS</h1>
+
+        <!-- Bio -->
+        <div class="bio-content">
+          <p>As a Chartered Engineer (CEng) with an MSc in Communications Engineering and Signal Processing, I’m a highly qualified network/telecom professional engineer. I have been involved in the technology sector, IT in combination with Telecoms, for more than 20 years. Presently, my focus and my interests are more in the IT sector. I am MIET, MInstP, MBCS, ARAeS and SMIEEE.</p>
+
+          <p>Comfortable at adopting a lead position and taking responsibility aiming for a future career within your organization. An inquisitive mind, open to comprehending and absorbing new ideas, concepts, and technologies with excellent technical and engineering knowledge. Self-motivated, ambitious, and focused on applying new work procedures and dealing effectively with any issues. Excellent time management skills, able to communicate well at all levels and with all types of people of different nationalities and cultures, had studied and worked as part of a team and as an individual. Familiar with a wide range of IT and engineering applications, combined with high standards of innumeracy and literacy.</p>
+
+          <p>- Able to work independently and in a team, to deliver results as planned<br>
+             - Very well organized and strong in documentation<br>
+             - Focused to design highly available solutions<br>
+             - Result-driven combined with excellent organizational skills</p>
+        </div>
+
+        <!-- Publications below the Bio -->
+        <section class="publications-section" style="margin-top:20px">
+          <h2>Publications</h2>
+          <div class="publications-list">
+
+            <div class="publication-item">
+              <div class="publication-content">
+                <h3 class="publication-title">Design Multiband Monopole and Microstrip Patch Antennas using High Frequency Structure Simulator</h3>
+                <p class="publication-authors">Georgios Giannakopoulos and Khushbu Mehboob Shaikh</p>
+                <div class="publication-links">
+                  <a class="publication-link" href="https://arxiv.org/abs/2412.06667" target="_blank" rel="noopener">ABS</a>
+                  <a class="publication-link" href="https://arxiv.org/a/giannakopoulos_g_1.html" target="_blank" rel="noopener">HTML</a>
+                  <a class="publication-link" href="https://doi.org/10.48550/arXiv.2412.06667" target="_blank" rel="noopener">PDF</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="publication-item">
+              <div class="publication-content">
+                <h3 class="publication-title">Evolution of IVR building techniques: from code writing to AI-powered automation</h3>
+                <p class="publication-authors">Khushbu Mehboob Shaikh and Georgios Giannakopoulos</p>
+                <div class="publication-links">
+                  <a class="publication-link" href="https://arxiv.org/abs/2411.10895" target="_blank" rel="noopener">ABS</a>
+                  <a class="publication-link" href="https://arxiv.org/a/giannakopoulos_g_1.html" target="_blank" rel="noopener">HTML</a>
+                  <a class="publication-link" href="https://doi.org/10.48550/arXiv.2411.10895" target="_blank" rel="noopener">PDF</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="publication-item">
+              <div class="publication-content">
+                <h3 class="publication-title">Multiband Monopole and Microstrip Patch Antennas for GSM and DCS bands: A guidance to design Monopole (2D) and (3D) and Microstrip Patch Antennas by using Ansoft HFSS, without experience!</h3>
+                <p class="publication-authors">Georgios Giannakopoulos</p>
+                <div class="publication-links">
+                  <a class="publication-link" href="https://doi.org/10.5281/zenodo.11180849" target="_blank" rel="noopener">ABS</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="publication-item">
+              <div class="publication-content">
+                <h3 class="publication-title">Design a 1.3 GHz Microstrip Patch Antenna for a PAL TV signal: A guidance on how to design a Microstrip Patch Antenna (2D) using Ansoft Designer</h3>
+                <p class="publication-authors">Georgios Giannakopoulos</p>
+                <div class="publication-links">
+                  <a class="publication-link" href="https://doi.org/10.5281/zenodo.11180930" target="_blank" rel="noopener">ABS</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="publication-item">
+              <div class="publication-content">
+                <h3 class="publication-title">Low Power Modem Design: A guidance to use novel algorithms (QPSK) and digital filters (FIR, IIR) with MATLAB, SIMULINK with VHDL and Xilinx FPGA</h3>
+                <p class="publication-authors">Georgios Giannakopoulos</p>
+                <div class="publication-links">
+                  <a class="publication-link" href="https://doi.org/10.5281/zenodo.11180956" target="_blank" rel="noopener">ABS</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </main>
     </div>
-
-    <!-- ===== Bio (left content flows beside the right column) ===== -->
-    <div class="bio-content">
-      <p>As a Chartered Engineer (CEng) with an MSc in Communications Engineering and Signal Processing, I’m a highly qualified network/telecom professional engineer. I have been involved in the technology sector, IT in combination with Telecoms, for more than 20 years. Presently, my focus and my interests are more in the IT sector. I am MIET, MInstP, MBCS, ARAeS and SMIEEE.</p>
-
-      <p>Comfortable at adopting a lead position and taking responsibility aiming for a future career within your organization. An inquisitive mind, open to comprehending and absorbing new ideas, concepts, and technologies with excellent technical and engineering knowledge. Self-motivated, ambitious, and focused on applying new work procedures and dealing effectively with any issues. Excellent time management skills, able to communicate well at all levels and with all types of people of different nationalities and cultures, had studied and worked as part of a team and as an individual. Familiar with a wide range of IT and engineering applications, combined with high standards of innumeracy and literacy.</p>
-
-      <p>- Able to work independently and in a team, to deliver results as planned<br>
-         - Very well organized and strong in documentation<br>
-         - Focused to design highly available solutions<br>
-         - Result-driven combined with excellent organizational skills</p>
-    </div>
-
-    <!-- ===== Publications ===== -->
-    <section class="publications-section clear" style="margin-top:20px">
-      <h2>Publications</h2>
-      <div class="publications-list">
-
-        <!-- Newest first -->
-        <div class="publication-item">
-          <div class="publication-content">
-            <h3 class="publication-title">Design Multiband Monopole and Microstrip Patch Antennas using High Frequency Structure Simulator</h3>
-            <p class="publication-authors">Georgios Giannakopoulos and Khushbu Mehboob Shaikh</p>
-            <div class="publication-links">
-              <a class="publication-link" href="https://arxiv.org/abs/2412.06667" target="_blank" rel="noopener">ABS</a>
-              <a class="publication-link" href="https://arxiv.org/a/giannakopoulos_g_1.html" target="_blank" rel="noopener">HTML</a>
-              <a class="publication-link" href="https://doi.org/10.48550/arXiv.2412.06667" target="_blank" rel="noopener">PDF</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="publication-item">
-          <div class="publication-content">
-            <h3 class="publication-title">Evolution of IVR building techniques: from code writing to AI-powered automation</h3>
-            <p class="publication-authors">Khushbu Mehboob Shaikh and Georgios Giannakopoulos</p>
-            <div class="publication-links">
-              <a class="publication-link" href="https://arxiv.org/abs/2411.10895" target="_blank" rel="noopener">ABS</a>
-              <a class="publication-link" href="https://arxiv.org/a/giannakopoulos_g_1.html" target="_blank" rel="noopener">HTML</a>
-              <a class="publication-link" href="https://doi.org/10.48550/arXiv.2411.10895" target="_blank" rel="noopener">PDF</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="publication-item">
-          <div class="publication-content">
-            <h3 class="publication-title">Multiband Monopole and Microstrip Patch Antennas for GSM and DCS bands: A guidance to design Monopole (2D) and (3D) and Microstrip Patch Antennas by using Ansoft HFSS, without experience!</h3>
-            <p class="publication-authors">Georgios Giannakopoulos</p>
-            <div class="publication-links">
-              <a class="publication-link" href="https://doi.org/10.5281/zenodo.11180849" target="_blank" rel="noopener">ABS</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="publication-item">
-          <div class="publication-content">
-            <h3 class="publication-title">Design a 1.3 GHz Microstrip Patch Antenna for a PAL TV signal: A guidance on how to design a Microstrip Patch Antenna (2D) using Ansoft Designer</h3>
-            <p class="publication-authors">Georgios Giannakopoulos</p>
-            <div class="publication-links">
-              <a class="publication-link" href="https://doi.org/10.5281/zenodo.11180930" target="_blank" rel="noopener">ABS</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="publication-item">
-          <div class="publication-content">
-            <h3 class="publication-title">Low Power Modem Design: A guidance to use novel algorithms (QPSK) and digital filters (FIR, IIR) with MATLAB, SIMULINK with VHDL and Xilinx FPGA</h3>
-            <p class="publication-authors">Georgios Giannakopoulos</p>
-            <div class="publication-links">
-              <a class="publication-link" href="https://doi.org/10.5281/zenodo.11180956" target="_blank" rel="noopener">ABS</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
   </div>
 
-  <!-- ===== Config + script to populate the right rail ===== -->
+  <!-- ========== Sidebar data + chart rendering ========== -->
   <script>
-    const rrProfile = {
+    const sbProfile = {
+      avatar: "me.jpeg",
       followers: 10,
       following: 4,
       badgeLabel: "Google Scholar",
@@ -234,54 +200,49 @@
       ]
     };
 
-    // Fill numbers/badge
-    document.getElementById('rrFollowers').textContent = rrProfile.followers ?? 0;
-    document.getElementById('rrFollowing').textContent = rrProfile.following ?? 0;
-    document.getElementById('rrBadge').textContent = rrProfile.badgeLabel || "Badge";
-    document.getElementById('rrH').textContent = rrProfile.hindex ?? "";
-    document.getElementById('rrI10').textContent = rrProfile.i10index ?? "";
-    document.getElementById('rrTot').textContent = rrProfile.totalCitations ?? "";
+    // Populate sidebar
+    document.getElementById('sbPhoto').src = sbProfile.avatar;
+    sbFollowers.textContent = sbProfile.followers ?? 0;
+    sbFollowing.textContent = sbProfile.following ?? 0;
+    sbBadge.textContent = sbProfile.badgeLabel || 'Badge';
+    sbH.textContent = sbProfile.hindex ?? '';
+    sbI10.textContent = sbProfile.i10index ?? '';
+    sbTot.textContent = sbProfile.totalCitations ?? '';
 
-    // Communities
-    rrProfile.communities.forEach(t=>{
-      const s=document.createElement('span'); s.className='rr-pill'; s.textContent=t;
-      document.getElementById('rrPills').appendChild(s);
+    sbProfile.communities.forEach(t=>{
+      const s=document.createElement('span');
+      s.className='sb-pill'; s.textContent=t;
+      document.getElementById('sbPills').appendChild(s);
     });
 
-    // External links
-    rrProfile.links.forEach(l=>{
+    sbProfile.links.forEach(l=>{
       const a=document.createElement('a');
-      a.className='rr-ext'; a.href=l.href; a.target='_blank'; a.rel='noopener'; a.textContent=l.label;
-      document.getElementById('rrLinks').appendChild(a);
+      a.className='sb-ext'; a.href=l.href; a.target='_blank'; a.rel='noopener'; a.textContent=l.label;
+      document.getElementById('sbLinks').appendChild(a);
     });
 
-    // Simple SVG bar chart
+    // Simple SVG bar chart in sidebar
     (function(){
-      const data = rrProfile.citationsByYear || [];
-      const svg = document.getElementById('rrChart');
+      const data = sbProfile.citationsByYear || [];
+      const svg = document.getElementById('sbChart');
       const pad = {l:28,b:22,r:10,t:6};
-      const W = svg.clientWidth || 260, H = svg.clientHeight || 160;
+      const W = svg.clientWidth || 300, H = svg.clientHeight || 160;
       const innerW = W - pad.l - pad.r, innerH = H - pad.t - pad.b;
       const max = Math.max(10, ...data.map(d=>d.count));
       const barW = innerW / (data.length*1.4), gap = barW*0.4;
-
       while (svg.firstChild) svg.removeChild(svg.firstChild);
-
       const axis = document.createElementNS('http://www.w3.org/2000/svg','line');
       axis.setAttribute('x1', pad.l); axis.setAttribute('y1', H-pad.b);
       axis.setAttribute('x2', W-pad.r); axis.setAttribute('y2', H-pad.b);
       axis.setAttribute('stroke', '#e5e7eb'); svg.appendChild(axis);
-
       data.forEach((d,i)=>{
         const x = pad.l + i*(barW+gap);
         const h = Math.round(d.count/max * innerH);
         const y = pad.t + (innerH - h);
-
         const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
         rect.setAttribute('x', x); rect.setAttribute('y', y);
         rect.setAttribute('width', barW); rect.setAttribute('height', h);
         rect.setAttribute('fill', '#374151'); svg.appendChild(rect);
-
         const lbl = document.createElementNS('http://www.w3.org/2000/svg','text');
         lbl.setAttribute('x', x + barW/2); lbl.setAttribute('y', H - 6);
         lbl.setAttribute('text-anchor','middle'); lbl.setAttribute('font-size','10');
