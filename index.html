@@ -76,12 +76,18 @@
     /* Clear floats before publications section */
     .clear{clear:both}
 
+    .container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
     /* Mobile: stack right column under content */
     @media (max-width:900px){
       .right-col{float:none;margin:0 auto 16px;max-width:320px;width:100%}
     }
-.publications-section { clear: both; }     /* Option A */
-.container::after { content:""; display:table; clear:both; }  /* Option B (nice to have) */
+
 
 
   </style>
