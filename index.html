@@ -4,43 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Georgios Giannakopoulos CEng MIET SMIEEE AdvRITTech MBCS MInstP ARAeS  - Research Profile</title>
-  <style>
-  /* Right rail that sits under your existing photo on the right */
+ <style>
+  /* Right rail under the existing photo */
   .right-rail{
-    width: 260px;           /* match your picture width */
-    float: right;
-    margin-left: 24px;      /* gap from the main text */
-    margin-bottom: 12px;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    width:260px;             /* match your photo width */
+    float:right;
+    margin-left:24px;        /* gap from main text */
+    margin-bottom:12px;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     color:#0f172a;
   }
   .rr-card{border:1px solid #e5e7eb;border-radius:12px;padding:12px;background:#fff}
-  .rr-photo{width:100%; height:auto; border:1px solid #e5e7eb; border-radius:8px; display:block}
+  .rr-photo{width:100%;height:auto;border:1px solid #e5e7eb;border-radius:8px;display:block}
 
-  .rr-counts{display:flex; gap:16px; margin:10px 0 12px}
+  .rr-counts{display:flex;gap:16px;margin:10px 0 12px}
   .rr-counts b{font-weight:800}
   .rr-muted{color:#475569}
 
-  .rr-badge{display:inline-flex; gap:8px; align-items:center; border:1px solid #e5e7eb;
-            border-radius:10px; padding:6px 10px; margin:6px 0}
-  .rr-dot{width:10px; height:10px; border-radius:50%; background:#3b82f6; display:inline-block}
+  .rr-badge{display:inline-flex;gap:8px;align-items:center;border:1px solid #e5e7eb;
+            border-radius:10px;padding:6px 10px;margin:6px 0}
+  .rr-dot{width:10px;height:10px;border-radius:50%;background:#3b82f6;display:inline-block}
 
-  .rr-pills{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 12px}
-  .rr-pill{border:1px solid #e5e7eb; border-radius:999px; padding:6px 10px; font-size:.9rem}
+  .rr-pills{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
+  .rr-pill{border:1px solid #e5e7eb;border-radius:999px;padding:6px 10px;font-size:.9rem}
 
-  .rr-rule{border-top:1px solid #e5e7eb; margin:12px 0}
+  .rr-rule{border-top:1px solid #e5e7eb;margin:12px 0}
 
-  .rr-cites h3{margin:0 0 6px; font-size:1rem}
-  .rr-chart{width:100%; height:160px; border-left:1px solid #e5e7eb; border-bottom:1px solid #e5e7eb}
-  .rr-cmetrics{display:flex; justify-content:space-between; margin-top:8px}
-  .rr-linkrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
-  .rr-ext{font-size:.9rem; text-decoration:none; border-bottom:1px dotted #666; color:#1f2937}
+  .rr-cites h3{margin:0 0 6px;font-size:1rem}
+  .rr-chart{width:100%;height:160px;border-left:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb}
+  .rr-cmetrics{display:flex;justify-content:space-between;margin-top:8px}
 
-  /* Stack on small screens */
-  @media (max-width:900px){
-    .right-rail{float:none; margin:0 auto 16px}
-  }
+  .rr-linkrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .rr-ext{font-size:.9rem;text-decoration:none;border-bottom:1px dotted #666;color:#1f2937}
+
+  /* Stack on narrow screens */
+  @media (max-width:900px){ .right-rail{float:none;margin:0 auto 16px} }
 </style>
+
 
 <style id="monica-reading-highlight-style">
         .monica-reading-highlight {
@@ -54,10 +54,11 @@
       </style></head>
 <body>
   <!-- ===== Right rail under the photo ===== -->
+<!-- Right rail under the photo -->
 <script>
-  // Edit these numbers/links and the chart years
+  // EDIT THESE VALUES
   const rrProfile = {
-    avatar: "assets/profile.jpg",  // put your photo here
+    avatar: "assets/profile.jpg",     // your photo path
     followers: 10,
     following: 4,
     badgeLabel: "Google Scholar",
@@ -110,6 +111,92 @@
     <div id="rrLinks" class="rr-linkrow"></div>
   </div>
 </aside>
+
+
+<aside class="right-rail">
+  <div class="rr-card">
+    <img class="rr-photo" id="rrPhoto" src="assets/profile.jpg" alt="Profile photo">
+
+    <div class="rr-counts">
+      <div><b id="rrFollowers">0</b> <span class="rr-muted">Followers</span></div>
+      <div><b id="rrFollowing">0</b> <span class="rr-muted">Following</span></div>
+    </div>
+
+    <div class="rr-badge"><span class="rr-dot"></span><span id="rrBadge">Google Scholar</span></div>
+
+    <div id="rrPills" class="rr-pills"></div>
+
+    <div class="rr-rule"></div>
+
+    <div class="rr-cites">
+      <h3>Citations</h3>
+      <svg id="rrChart" class="rr-chart" role="img" aria-label="Citations by year"></svg>
+      <div class="rr-cmetrics">
+        <div><b id="rrH">0</b><span class="rr-muted">h-index</span></div>
+        <div><b id="rrI10">0</b><span class="rr-muted">i10-index</span></div>
+        <div><b id="rrTot">0</b><span class="rr-muted">citations</span></div>
+      </div>
+    </div>
+
+    <div class="rr-rule"></div>
+
+    <div id="rrLinks" class="rr-linkrow"></div>
+  </div>
+</aside>
+<script>
+  // Populate values
+  rrPhoto.src = rrProfile.avatar;
+  rrFollowers.textContent = rrProfile.followers ?? 0;
+  rrFollowing.textContent = rrProfile.following ?? 0;
+  rrBadge.textContent = rrProfile.badgeLabel || "Badge";
+  rrH.textContent = rrProfile.hindex ?? "";
+  rrI10.textContent = rrProfile.i10index ?? "";
+  rrTot.textContent = rrProfile.totalCitations ?? "";
+
+  // Pills
+  rrProfile.communities.forEach(t=>{
+    const s=document.createElement('span'); s.className='rr-pill'; s.textContent=t; rrPills.appendChild(s);
+  });
+
+  // External links
+  rrProfile.links.forEach(l=>{
+    const a=document.createElement('a'); a.className='rr-ext'; a.href=l.href; a.target='_blank'; a.rel='noopener'; a.textContent=l.label; rrLinks.appendChild(a);
+  });
+
+  // Simple SVG bar chart
+  (function(){
+    const data = rrProfile.citationsByYear || [];
+    const svg = document.getElementById('rrChart');
+    const pad = {l:28,b:22,r:10,t:6};
+    const W = svg.clientWidth || 260, H = svg.clientHeight || 160;
+    const innerW = W - pad.l - pad.r, innerH = H - pad.t - pad.b;
+    const max = Math.max(10, ...data.map(d=>d.count));
+    const barW = innerW / (data.length*1.4), gap = barW*0.4;
+
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+    const axis = document.createElementNS('http://www.w3.org/2000/svg','line');
+    axis.setAttribute('x1', pad.l); axis.setAttribute('y1', H-pad.b);
+    axis.setAttribute('x2', W-pad.r); axis.setAttribute('y2', H-pad.b);
+    axis.setAttribute('stroke', '#e5e7eb'); svg.appendChild(axis);
+
+    data.forEach((d,i)=>{
+      const x = pad.l + i*(barW+gap);
+      const h = Math.round(d.count/max * innerH);
+      const y = pad.t + (innerH - h);
+
+      const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+      rect.setAttribute('x', x); rect.setAttribute('y', y);
+      rect.setAttribute('width', barW); rect.setAttribute('height', h);
+      rect.setAttribute('fill', '#374151'); svg.appendChild(rect);
+
+      const lbl = document.createElementNS('http://www.w3.org/2000/svg','text');
+      lbl.setAttribute('x', x + barW/2); lbl.setAttribute('y', H - 6);
+      lbl.setAttribute('text-anchor','middle'); lbl.setAttribute('font-size','10');
+      lbl.setAttribute('fill','#374151'); lbl.textContent = d.year; svg.appendChild(lbl);
+    });
+  })();
+</script>
 
 </script>
   <div class="container">
