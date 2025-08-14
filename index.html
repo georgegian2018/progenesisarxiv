@@ -5,13 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Georgios Giannakopoulos CEng MIET SMIEEE AdvRITTech MBCS MInstP ARAeS — Research Profile</title>
 
-  <!-- ====== Minimal styles for layout + right rail ====== -->
   <style>
-    :root {
-      --text:#111827;
-      --muted:#475569;
-      --border:#e5e7eb;
-    }
+    :root { --text:#111827; --muted:#475569; --border:#e5e7eb; }
+
     html,body{margin:0;padding:0}
     body{
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -26,12 +22,11 @@
     a{color:#2563eb;text-decoration:none}
     a:hover{text-decoration:underline}
 
-    /* Right photo + panel floats on the right, text flows left */
-    .profile-image-container{
-      float:right;
+    /* ===== Right column wrapper (photo + panel) ===== */
+    .right-col{
       width:260px;
+      float:right;
       margin-left:24px;
-      margin-bottom:12px;
     }
     .profile-image{
       width:100%;
@@ -39,15 +34,11 @@
       display:block;
       border:1px solid var(--border);
       border-radius:8px;
+      margin-bottom:12px; /* space above the stats card */
     }
 
-    .right-rail{
-      width:260px;
-      float:right;
-      margin-left:24px;
-      font-size:14px;
-      color:#0f172a;
-    }
+    /* ===== Right-rail card ===== */
+    .right-rail{width:100%; font-size:14px; color:#0f172a;}
     .rr-card{border:1px solid var(--border);border-radius:12px;padding:12px;background:#fff}
 
     .rr-counts{display:flex;gap:16px;margin:10px 0 12px}
@@ -68,10 +59,10 @@
     .rr-cmetrics{display:flex;justify-content:space-between;margin-top:8px}
 
     .rr-linkrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .rr-ext{font-size:.9rem;border-bottom:1px dotted #666;color:#1f2937}
+    .rr-ext{font-size:.9rem;border-bottom:1px dotted #666;color:#1f2937;text-decoration:none}
     .rr-ext:hover{border-bottom-color:#2563eb;color:#2563eb}
 
-    /* Publications */
+    /* ===== Publications ===== */
     .publication-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--border)}
     .publication-content{flex:1}
     .publication-authors{color:var(--muted);font-size:14px;margin:4px 0}
@@ -82,9 +73,12 @@
     }
     .publication-link:hover{border-color:#2563eb;color:#2563eb}
 
-    /* Mobile: stack right rail under text */
+    /* Clear floats before publications section */
+    .clear{clear:both}
+
+    /* Mobile: stack right column under content */
     @media (max-width:900px){
-      .profile-image-container, .right-rail{float:none;margin:0 auto 16px;max-width:320px;width:100%}
+      .right-col{float:none;margin:0 auto 16px;max-width:320px;width:100%}
     }
   </style>
 </head>
@@ -93,7 +87,43 @@
 
     <!-- ===== Header ===== -->
     <h1>Georgios Giannakopoulos CEng MIET SMIEEE AdvRITTech MBCS MInstP ARAeS</h1>
-    <!-- ===== Bio (text stays on the left) ===== -->
+
+    <!-- ===== Right column (photo + stats) ===== -->
+    <div class="right-col">
+      <!-- Use your local image file; put it in the same repo and keep the name below -->
+      <img class="profile-image" src="me.jpeg" alt="Profile photo" />
+
+      <aside class="right-rail">
+        <div class="rr-card">
+          <div class="rr-counts">
+            <div><b id="rrFollowers">0</b> <span class="rr-muted">Followers</span></div>
+            <div><b id="rrFollowing">0</b> <span class="rr-muted">Following</span></div>
+          </div>
+
+          <div class="rr-badge"><span class="rr-dot"></span><span id="rrBadge">Google Scholar</span></div>
+
+          <div id="rrPills" class="rr-pills"></div>
+
+          <div class="rr-rule"></div>
+
+          <div class="rr-cites">
+            <h3>Citations</h3>
+            <svg id="rrChart" class="rr-chart" role="img" aria-label="Citations by year"></svg>
+            <div class="rr-cmetrics">
+              <div><b id="rrH">0</b><span class="rr-muted">h-index</span></div>
+              <div><b id="rrI10">0</b><span class="rr-muted">i10-index</span></div>
+              <div><b id="rrTot">0</b><span class="rr-muted">citations</span></div>
+            </div>
+          </div>
+
+          <div class="rr-rule"></div>
+
+          <div id="rrLinks" class="rr-linkrow"></div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ===== Bio (left content flows beside the right column) ===== -->
     <div class="bio-content">
       <p>As a Chartered Engineer (CEng) with an MSc in Communications Engineering and Signal Processing, I’m a highly qualified network/telecom professional engineer. I have been involved in the technology sector, IT in combination with Telecoms, for more than 20 years. Presently, my focus and my interests are more in the IT sector. I am MIET, MInstP, MBCS, ARAeS and SMIEEE.</p>
 
@@ -105,42 +135,8 @@
          - Result-driven combined with excellent organizational skills</p>
     </div>
 
-    <!-- ===== Right rail UNDER the photo ===== -->
-    <div class="profile-image-container">
-  <img class="profile-image" alt="Profile photo" src="me.jpeg" />
-</div>
-    <aside class="right-rail">
-      <div class="rr-card">
-
-        <div class="rr-counts">
-          <div><b id="rrFollowers">0</b> <span class="rr-muted">Followers</span></div>
-          <div><b id="rrFollowing">0</b> <span class="rr-muted">Following</span></div>
-        </div>
-
-        <div class="rr-badge"><span class="rr-dot"></span><span id="rrBadge">Google Scholar</span></div>
-
-        <div id="rrPills" class="rr-pills"></div>
-
-        <div class="rr-rule"></div>
-
-        <div class="rr-cites">
-          <h3>Citations</h3>
-          <svg id="rrChart" class="rr-chart" role="img" aria-label="Citations by year"></svg>
-          <div class="rr-cmetrics">
-            <div><b id="rrH">0</b><span class="rr-muted">h-index</span></div>
-            <div><b id="rrI10">0</b><span class="rr-muted">i10-index</span></div>
-            <div><b id="rrTot">0</b><span class="rr-muted">citations</span></div>
-          </div>
-        </div>
-
-        <div class="rr-rule"></div>
-
-        <div id="rrLinks" class="rr-linkrow"></div>
-      </div>
-    </aside>
-
     <!-- ===== Publications ===== -->
-    <section class="publications-section" style="clear:both;margin-top:12px">
+    <section class="publications-section clear" style="margin-top:20px">
       <h2>Publications</h2>
       <div class="publications-list">
 
@@ -204,7 +200,7 @@
 
   </div>
 
-  <!-- ====== Right-rail config + script (edit your numbers/links here) ====== -->
+  <!-- ===== Config + script to populate the right rail ===== -->
   <script>
     const rrProfile = {
       followers: 10,
@@ -228,15 +224,15 @@
       ]
     };
 
-    // Populate counts/badge
-    rrFollowers.textContent = rrProfile.followers ?? 0;
-    rrFollowing.textContent = rrProfile.following ?? 0;
-    rrBadge.textContent = rrProfile.badgeLabel || "Badge";
-    rrH.textContent = rrProfile.hindex ?? "";
-    rrI10.textContent = rrProfile.i10index ?? "";
-    rrTot.textContent = rrProfile.totalCitations ?? "";
+    // Fill numbers/badge
+    document.getElementById('rrFollowers').textContent = rrProfile.followers ?? 0;
+    document.getElementById('rrFollowing').textContent = rrProfile.following ?? 0;
+    document.getElementById('rrBadge').textContent = rrProfile.badgeLabel || "Badge";
+    document.getElementById('rrH').textContent = rrProfile.hindex ?? "";
+    document.getElementById('rrI10').textContent = rrProfile.i10index ?? "";
+    document.getElementById('rrTot').textContent = rrProfile.totalCitations ?? "";
 
-    // Communities pills
+    // Communities
     rrProfile.communities.forEach(t=>{
       const s=document.createElement('span'); s.className='rr-pill'; s.textContent=t;
       document.getElementById('rrPills').appendChild(s);
