@@ -5,50 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Georgios Giannakopoulos CEng MIET SMIEEE AdvRITTech MBCS MInstP ARAeS  - Research Profile</title>
   <style>
-    :root{
-      --text:#0f172a; --muted:#475569; --line:#e5e7eb; --brand:#111827;
-      --btn-bg:#fff; --btn-border:#111; --btn-hover:#111; --btn-hover-text:#fff;
-      --card-bg:#ffffff;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,"Helvetica Neue",Arial,sans-serif;color:var(--text);background:#fff}
-    a{color:inherit}
-    .wrap{max-width:1100px;margin:0 auto;padding:24px}
-    .grid{display:grid;grid-template-columns:300px 1fr;gap:28px}
-    @media (max-width:960px){.grid{grid-template-columns:1fr}}
-    /* Cards / layout */
-    .card{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--card-bg)}
-    .name{font-size:1.6rem;font-weight:800;margin:0 0 6px}
-    .affil{color:var(--muted);margin:0 0 12px}
-    .counts{display:flex;gap:18px;margin:10px 0 14px}
-    .counts b{font-weight:800}
-    .badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:6px 10px;margin:6px 0}
-    .badge .dot{width:10px;height:10px;border-radius:50%;background:#3b82f6;display:inline-block}
-    .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
-    .pill{border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:.9rem}
-    .hbar{border-top:1px solid var(--line);margin:14px 0}
-    /* Avatar */
-    .avatar{width:96px;height:96px;border-radius:12px;object-fit:cover;border:1px solid var(--line)}
-    .avatar-row{display:flex;gap:12px;align-items:center;margin-bottom:10px}
-    /* Citations */
-    .cites h3{margin:0 0 8px}
-    .chart{width:100%;height:170px;border-left:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;padding:6px}
-    .chart svg{width:100%;height:100%}
-    .metrics{display:flex;justify-content:space-between;margin-top:10px}
-    .metric a,.metric span{color:#1f2937;text-decoration:none}
-    .metric b{display:block;font-size:1.2rem}
-    /* Publications */
-    h2{margin:0 0 10px}
-    .pub{border-bottom:1px solid var(--line);padding:14px 0}
-    .pub-title{margin:0;font-size:1.05rem;font-weight:700;line-height:1.35}
-    .pub-auth{margin:6px 0;color:var(--muted);font-size:.95rem}
-    .btn{display:inline-block;margin:8px 8px 0 0;padding:4px 10px;border:1.5px solid var(--btn-border);background:var(--btn-bg);text-decoration:none;border-radius:6px;font-size:.85rem}
-    .btn:hover{background:var(--btn-hover);color:var(--btn-hover-text)}
-    .muted{color:var(--muted)}
-    .links-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .ext-link{font-size:.9rem;text-decoration:none;border-bottom:1px dotted #666}
-  </style>
+  /* Right rail that sits under your existing photo on the right */
+  .right-rail{
+    width: 260px;           /* match your picture width */
+    float: right;
+    margin-left: 24px;      /* gap from the main text */
+    margin-bottom: 12px;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color:#0f172a;
+  }
+  .rr-card{border:1px solid #e5e7eb;border-radius:12px;padding:12px;background:#fff}
+  .rr-photo{width:100%; height:auto; border:1px solid #e5e7eb; border-radius:8px; display:block}
+
+  .rr-counts{display:flex; gap:16px; margin:10px 0 12px}
+  .rr-counts b{font-weight:800}
+  .rr-muted{color:#475569}
+
+  .rr-badge{display:inline-flex; gap:8px; align-items:center; border:1px solid #e5e7eb;
+            border-radius:10px; padding:6px 10px; margin:6px 0}
+  .rr-dot{width:10px; height:10px; border-radius:50%; background:#3b82f6; display:inline-block}
+
+  .rr-pills{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 12px}
+  .rr-pill{border:1px solid #e5e7eb; border-radius:999px; padding:6px 10px; font-size:.9rem}
+
+  .rr-rule{border-top:1px solid #e5e7eb; margin:12px 0}
+
+  .rr-cites h3{margin:0 0 6px; font-size:1rem}
+  .rr-chart{width:100%; height:160px; border-left:1px solid #e5e7eb; border-bottom:1px solid #e5e7eb}
+  .rr-cmetrics{display:flex; justify-content:space-between; margin-top:8px}
+  .rr-linkrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+  .rr-ext{font-size:.9rem; text-decoration:none; border-bottom:1px dotted #666; color:#1f2937}
+
+  /* Stack on small screens */
+  @media (max-width:900px){
+    .right-rail{float:none; margin:0 auto 16px}
+  }
+</style>
+
 <style id="monica-reading-highlight-style">
         .monica-reading-highlight {
           animation: fadeInOut 1.5s ease-in-out;
