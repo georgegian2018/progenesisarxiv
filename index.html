@@ -53,36 +53,64 @@
         }
       </style></head>
 <body>
-  <script>
-  const profileConfig = {
-    displayName: "Georgios Giannakopoulos",
-    affiliation: "Principal Network & Telecommunications Engineer",
-    avatar: "assets/profile.jpg",  // put your image at this path
+  <!-- ===== Right rail under the photo ===== -->
+<script>
+  // Edit these numbers/links and the chart years
+  const rrProfile = {
+    avatar: "assets/profile.jpg",  // put your photo here
     followers: 10,
     following: 4,
     badgeLabel: "Google Scholar",
-    // Show small community pills
     communities: ["Antenna","RF","5G/6G","IoT","STEM"],
-    // Citation metrics
     hindex: 4,
     i10index: 4,
     totalCitations: 146,
-    // Citations by year (for the mini chart)
     citationsByYear: [
-      {year:2021, count:0},
-      {year:2022, count:6},
-      {year:2023, count:18},
-      {year:2024, count:76},
-      {year:2025, count:52}
+      {year:2021,count:0},
+      {year:2022,count:6},
+      {year:2023,count:18},
+      {year:2024,count:76},
+      {year:2025,count:52}
     ],
-    // External profile links (edit/extend as you like)
     links: [
-      {label: "Google Scholar", href: "https://scholar.google.com/"},
-      {label: "ORCID", href: "https://orcid.org/"},
-      {label: "ResearchGate", href: "https://www.researchgate.net/"}
+      {label:"Google Scholar", href:"https://scholar.google.com/"},
+      {label:"ORCID", href:"https://orcid.org/"},
+      {label:"ResearchGate", href:"https://www.researchgate.net/"}
     ]
   };
-    ];
+</script>
+
+<aside class="right-rail">
+  <div class="rr-card">
+    <img class="rr-photo" id="rrPhoto" src="assets/profile.jpg" alt="Profile photo">
+
+    <div class="rr-counts">
+      <div><b id="rrFollowers">0</b> <span class="rr-muted">Followers</span></div>
+      <div><b id="rrFollowing">0</b> <span class="rr-muted">Following</span></div>
+    </div>
+
+    <div class="rr-badge"><span class="rr-dot"></span><span id="rrBadge">Google Scholar</span></div>
+
+    <div id="rrPills" class="rr-pills"></div>
+
+    <div class="rr-rule"></div>
+
+    <div class="rr-cites">
+      <h3>Citations</h3>
+      <svg id="rrChart" class="rr-chart" role="img" aria-label="Citations by year"></svg>
+      <div class="rr-cmetrics">
+        <div><b id="rrH">0</b><span class="rr-muted">h-index</span></div>
+        <div><b id="rrI10">0</b><span class="rr-muted">i10-index</span></div>
+        <div><b id="rrTot">0</b><span class="rr-muted">citations</span></div>
+      </div>
+    </div>
+
+    <div class="rr-rule"></div>
+
+    <div id="rrLinks" class="rr-linkrow"></div>
+  </div>
+</aside>
+
 </script>
   <div class="container">
     <div class="prose">
