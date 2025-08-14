@@ -192,26 +192,35 @@
     ]
   };
 
-    // Populate sidebar
-    document.getElementById('sbPhoto').src = sbProfile.avatar;
-    sbFollowers.textContent = sbProfile.followers ?? 0;
-    sbFollowing.textContent = sbProfile.following ?? 0;
-    sbBadge.textContent = sbProfile.badgeLabel || 'Badge';
-    sbH.textContent = sbProfile.hindex ?? '';
-    sbI10.textContent = sbProfile.i10index ?? '';
-    sbTot.textContent = sbProfile.totalCitations ?? '';
+  // Photo
+const photoEl = document.getElementById('sbPhoto');
+if (photoEl) photoEl.src = sbProfile.avatar;
 
-    sbProfile.communities.forEach(t=>{
-      const s=document.createElement('span');
-      s.className='sb-pill'; s.textContent=t;
-      document.getElementById('sbPills').appendChild(s);
-    });
+// Communities pills
+const pillsEl = document.getElementById('sbPills');
+if (pillsEl) {
+  sbProfile.communities.forEach(t => {
+    const s = document.createElement('span');
+    s.className = 'sb-pill';
+    s.textContent = t;
+    pillsEl.appendChild(s);
+  });
+}
 
-    sbProfile.links.forEach(l=>{
-      const a=document.createElement('a');
-      a.className='sb-ext'; a.href=l.href; a.target='_blank'; a.rel='noopener'; a.textContent=l.label;
-      document.getElementById('sbLinks').appendChild(a);
-    });
+// External links
+const linksEl = document.getElementById('sbLinks');
+if (linksEl) {
+  sbProfile.links.forEach(l => {
+    const a = document.createElement('a');
+    a.className = 'sb-ext';
+    a.href = l.href;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = l.label;
+    linksEl.appendChild(a);
+  });
+}
+
 
     // Simple SVG bar chart in sidebar
     // (Optional) Citations chart – only runs if the SVG exists
