@@ -15,8 +15,13 @@
     .container{max-width:1120px;margin:0 auto;padding:24px}
     .layout{display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:start}
 
-    /* Sidebar (moved from right to LEFT) */
-    .sidebar{width:300px}
+    /* Sidebar (LEFT) */
+    .sidebar{
+      width:300px;
+      position: sticky;   /* keep visible while scrolling */
+      top:16px;
+      height:fit-content;
+    }
     .sb-photo{width:100%;height:auto;border:1px solid var(--border);border-radius:8px;display:block;margin-bottom:12px}
     .sb-card{border:1px solid var(--border);border-radius:12px;padding:12px;background:#fff}
 
@@ -24,7 +29,7 @@
     .sb-counts b{font-weight:800}
     .sb-muted{color:var(--muted)}
 
-    .sb-badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--border);border-radius:10px;padding:6px 10px;margin:6px 0}
+    .sb-badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--border);border-radius:10px;padding:6px 10px;margin:6px 0;text-decoration:none;color:inherit}
     .sb-dot{width:10px;height:10px;border-radius:50%;background:#3b82f6;display:inline-block}
 
     .sb-pills{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
@@ -55,15 +60,10 @@
     .publication-link:hover{border-color:#2563eb;color:#2563eb}
 
     /* Mobile: stack */
-   @media (max-width:900px){
-  .layout{grid-template-columns:1fr}
-  .sidebar{
-  width:300px;
-  position: sticky;
-  top:16px;
-  height:fit-content;
-}
-}
+    @media (max-width:900px){
+      .layout{grid-template-columns:1fr}
+      .sidebar{position:static;width:100%;height:auto} /* natural flow on mobile */
+    }
   </style>
 </head>
 <body>
@@ -73,23 +73,20 @@
       <!-- ========== LEFT COLUMN (Sidebar) ========== -->
       <aside class="sidebar">
         <img id="sbPhoto" class="sb-photo" src="me.jpeg" alt="Profile photo" />
-     
 
+        <a class="sb-badge" href="https://scholar.google.com/citations?user=0gjHyPcAAAAJ&hl=en" target="_blank" rel="noopener">
+          <span class="sb-dot"></span>
+          Google Scholar
+        </a>
 
+        <div id="sbPills" class="sb-pills"></div>
 
-     <a class="sb-badge" href="https://scholar.google.com/citations?user=0gjHyPcAAAAJ&hl=en" target="_blank" rel="noopener">
-  <span class="sb-dot"></span>
-  Google Scholar
-</a>
+        <div class="sb-rule"></div>
 
-          <div id="sbPills" class="sb-pills"></div>
+        <!-- (Optional) Citations block is removed/commented out, so no chart element is present -->
 
-          <div class="sb-rule"></div>
-
-
-          <div class="sb-rule"></div>
-          <div id="sbLinks" class="sb-linkrow"></div>
-        </div>
+        <div class="sb-rule"></div>
+        <div id="sbLinks" class="sb-linkrow"></div>
       </aside>
 
       <!-- ========== RIGHT COLUMN (Main) ========== -->
@@ -108,7 +105,7 @@
              - Result-driven combined with excellent organizational skills</p>
         </div>
 
-        <!-- Publications below the Bio -->
+        <!-- Publications -->
         <section class="publications-section" style="margin-top:20px">
           <h2>Publications</h2>
           <div class="publications-list">
@@ -173,91 +170,89 @@
     </div>
   </div>
 
-  <!-- ========== Sidebar data + chart rendering ========== -->
-<script>
-  const sbProfile = {
-    avatar: "me.jpeg",
-    communities: ["Antenna","RF","5G/6G","IoT","STEM"],
-    links: [
-      {label:"Google Scholar", href:"https://scholar.google.com/citations?user=0gjHyPcAAAAJ&hl=en"},
-      {label:"ORCID", href:"https://orcid.org/0000-0002-3707-3276"},
-      {label:"ResearchGate", href:"https://www.researchgate.net/profile/Georgios-Giannakopoulos"}
-    ],
-    citationsByYear: [
-      {year:2021,count:0},
-      {year:2022,count:6},
-      {year:2023,count:18},
-      {year:2024,count:76},
-      {year:2025,count:52}
-    ]
-  };
+  <!-- ========== Sidebar data + script ========== -->
+  <script>
+    const sbProfile = {
+      avatar: "me.jpeg",
+      communities: ["Antenna","RF","5G/6G","IoT","STEM"],
+      links: [
+        {label:"Google Scholar", href:"https://scholar.google.com/citations?user=0gjHyPcAAAAJ&hl=en"},
+        {label:"ORCID", href:"https://orcid.org/0000-0002-3707-3276"},
+        {label:"ResearchGate", href:"https://www.researchgate.net/profile/Georgios-Giannakopoulos"}
+      ],
+      citationsByYear: [
+        {year:2021,count:0},
+        {year:2022,count:6},
+        {year:2023,count:18},
+        {year:2024,count:76},
+        {year:2025,count:52}
+      ]
+    };
 
-  // Photo
-const photoEl = document.getElementById('sbPhoto');
-if (photoEl) photoEl.src = sbProfile.avatar;
+    // Photo
+    const photoEl = document.getElementById('sbPhoto');
+    if (photoEl) photoEl.src = sbProfile.avatar;
 
-// Communities pills
-const pillsEl = document.getElementById('sbPills');
-if (pillsEl) {
-  sbProfile.communities.forEach(t => {
-    const s = document.createElement('span');
-    s.className = 'sb-pill';
-    s.textContent = t;
-    pillsEl.appendChild(s);
-  });
-}
+    // Communities pills
+    const pillsEl = document.getElementById('sbPills');
+    if (pillsEl) {
+      sbProfile.communities.forEach(t => {
+        const s = document.createElement('span');
+        s.className = 'sb-pill';
+        s.textContent = t;
+        pillsEl.appendChild(s);
+      });
+    }
 
-// External links
-const linksEl = document.getElementById('sbLinks');
-if (linksEl) {
-  sbProfile.links.forEach(l => {
-    const a = document.createElement('a');
-    a.className = 'sb-ext';
-    a.href = l.href;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    a.textContent = l.label;
-    linksEl.appendChild(a);
-  });
-}
+    // External links
+    const linksEl = document.getElementById('sbLinks');
+    if (linksEl) {
+      sbProfile.links.forEach(l => {
+        const a = document.createElement('a');
+        a.className = 'sb-ext';
+        a.href = l.href;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = l.label;
+        linksEl.appendChild(a);
+      });
+    }
 
+    // Citations chart is optional; it will only run if an SVG with id="sbChart" exists.
+    (function(){
+      const svg = document.getElementById('sbChart');
+      if (!svg) return;
 
-    // Simple SVG bar chart in sidebar
-    // (Optional) Citations chart – only runs if the SVG exists
-  (function(){
-    const svg = document.getElementById('sbChart');
-    if (!svg) return;  // you commented it out; skip safely
+      const data = sbProfile.citationsByYear || [];
+      const pad = {l:28,b:22,r:10,t:6};
+      const W = svg.clientWidth || 300, H = svg.clientHeight || 160;
+      const innerW = W - pad.l - pad.r, innerH = H - pad.t - pad.b;
+      const max = Math.max(10, ...data.map(d=>d.count));
+      const barW = innerW / (data.length*1.4), gap = barW*0.4;
 
-    const data = sbProfile.citationsByYear || [];
-    const pad = {l:28,b:22,r:10,t:6};
-    const W = svg.clientWidth || 300, H = svg.clientHeight || 160;
-    const innerW = W - pad.l - pad.r, innerH = H - pad.t - pad.b;
-    const max = Math.max(10, ...data.map(d=>d.count));
-    const barW = innerW / (data.length*1.4), gap = barW*0.4;
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
 
-    while (svg.firstChild) svg.removeChild(svg.firstChild);
+      const axis = document.createElementNS('http://www.w3.org/2000/svg','line');
+      axis.setAttribute('x1', pad.l); axis.setAttribute('y1', H-pad.b);
+      axis.setAttribute('x2', W-pad.r); axis.setAttribute('y2', H-pad.b);
+      axis.setAttribute('stroke', '#e5e7eb'); svg.appendChild(axis);
 
-    const axis = document.createElementNS('http://www.w3.org/2000/svg','line');
-    axis.setAttribute('x1', pad.l); axis.setAttribute('y1', H-pad.b);
-    axis.setAttribute('x2', W-pad.r); axis.setAttribute('y2', H-pad.b);
-    axis.setAttribute('stroke', '#e5e7eb'); svg.appendChild(axis);
+      data.forEach((d,i)=>{
+        const x = pad.l + i*(barW+gap);
+        const h = Math.round(d.count/max * innerH);
+        const y = pad.t + (innerH - h);
 
-    data.forEach((d,i)=>{
-      const x = pad.l + i*(barW+gap);
-      const h = Math.round(d.count/max * innerH);
-      const y = pad.t + (innerH - h);
+        const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+        rect.setAttribute('x', x); rect.setAttribute('y', y);
+        rect.setAttribute('width', barW); rect.setAttribute('height', h);
+        rect.setAttribute('fill', '#374151'); svg.appendChild(rect);
 
-      const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
-      rect.setAttribute('x', x); rect.setAttribute('y', y);
-      rect.setAttribute('width', barW); rect.setAttribute('height', h);
-      rect.setAttribute('fill', '#374151'); svg.appendChild(rect);
-
-      const lbl = document.createElementNS('http://www.w3.org/2000/svg','text');
-      lbl.setAttribute('x', x + barW/2); lbl.setAttribute('y', H - 6);
-      lbl.setAttribute('text-anchor','middle'); lbl.setAttribute('font-size','10');
-      lbl.setAttribute('fill','#374151'); lbl.textContent = d.year; svg.appendChild(lbl);
-    });
-  })();
-</script>
+        const lbl = document.createElementNS('http://www.w3.org/2000/svg','text');
+        lbl.setAttribute('x', x + barW/2); lbl.setAttribute('y', H - 6);
+        lbl.setAttribute('text-anchor','middle'); lbl.setAttribute('font-size','10');
+        lbl.setAttribute('fill','#374151'); lbl.textContent = d.year; svg.appendChild(lbl);
+      });
+    })();
+  </script>
 </body>
 </html>
