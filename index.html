@@ -11,6 +11,12 @@
     html,body{margin:0;padding:0}
     body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);line-height:1.6;background:#fff}
 
+	  /* --- IEEE citation line global controls --- */
+:root{
+  --cite-color: #0f172a;   /* change this to any color */
+  --cite-size: 16px;       /* change this to any size (px/rem) */
+}
+
     /* ========== Layout: LEFT sidebar + RIGHT main ========== */
     .container{max-width:1120px;margin:0 auto;padding:24px}
     .layout{display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:start}
@@ -77,11 +83,24 @@
 .publication-authors { color: #000000; }   /* dark text */
 .publication-meta    { color: #000000; }   /* muted line under authors */
 
+/* final .publication-cite (replace your old one) */
 .publication-cite{
-  color: var(--muted);   /* change this or use a hex like #374151 */
-  font-size: 14px;
+  color: var(--cite-color);
+  font-size: var(--cite-size);
+  line-height: 1.55;
   margin-top: 2px;
 }
+	  /* make DOI/link match the line color */
+.publication-cite a,
+.publication-cite a:visited{
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.publication-cite a:hover{ opacity:.85; }
+
+/* ensure all inline elements inherit same color */
+.publication-cite *{ color: inherit; }
 .publication-cite em{ font-style: italic; }
 
 
